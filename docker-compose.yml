@@ -35,6 +35,18 @@ services:
     container_name: redis
     ports:
       - "6379:6379"
+  cronservice:
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        cron: "* * * * *"
+        tz: "Europe/Paris"
+    command: "php main.php"
+    environment:
+      - MAVALEUR=mavaleur
+
 volumes:
   db_data:
     driver: local
