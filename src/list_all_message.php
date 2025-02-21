@@ -7,7 +7,7 @@ include 'redis.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recevoir messages</title>
+    <title>Liste de tous les messages</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 
@@ -21,14 +21,7 @@ include 'redis.php';
     </div>
 
     <div class="container">
-        <h1>Recevoir messages</h1>
-        <form method="get" action="list_message.php">
-            <label for="recipient">Destinataire :</label>
-            <input type="text" id="recipient" name="recipient" value="<?php echo isset($_GET['recipient']) ? htmlspecialchars($_GET['recipient']) : ''; ?>" required>
-            <div class="button-container">
-                <button class="btn add-btn" type="submit">Afficher les messages</button>
-            </div>
-        </form>
+        <h1>Liste de tous les messages</h1>
         <ul id="messages">
             <!-- Les messages seront affichés ici -->
         </ul>
@@ -39,16 +32,13 @@ include 'redis.php';
     </div>
 
     <script>
-        <?php if (isset($_GET['recipient'])): ?>
-        const recipient = "<?php echo $_GET['recipient']; ?>";
-        const eventSource = new EventSource('subscribe.php?recipient=' + recipient);
+        const eventSource = new EventSource('subscribe_all.php');
         eventSource.onmessage = function(event) {
             const messageList = document.getElementById('messages');
             const newMessage = document.createElement('li');
             newMessage.textContent = event.data;
             messageList.appendChild(newMessage);
         };
-        <?php endif; ?>
     </script>
 
 </body>

@@ -12,8 +12,9 @@
 
     <div class="navbar">
         <a href="index.php">Accueil</a>
-        <a href="send_message.php">Envoyer un message</a>
-        <a href="list_message.php">Liste des messages</a>
+        <a href="send_message.php">Envoyer message</a>
+        <a href="list_message.php">Recevoir messages</a>
+        <a href="list_all_message.php">Tous les messages</a>
     </div>
 
     <div class="container">
@@ -21,10 +22,10 @@
         <p>Bienvenue sur l'application de messagerie</p>
         <div class="button-container">
             <form action="list_message.php">
-                <button class="btn" type="submit">Liste des messages</button>
+                <button class="btn" type="submit">Recevoir messages</button>
             </form>
             <form action="send_message.php">
-                <button class="btn" type="submit">Envoyer un message</button>
+                <button class="btn" type="submit">Envoyer message</button>
             </form>
         </div>
     </div>

@@ -30,7 +30,7 @@ body {
     left: 0;
     width: 100%;
     background: #007BFF;
-    padding: 15px 0;
+    padding: 15px;
     display: flex;
     justify-content: center;
     gap: 15px;
@@ -97,6 +97,7 @@ input, textarea {
     border: 1px solid #ddd;
     border-radius: 5px;
     font-size: 16px;
+    box-sizing: border-box;
 }
 
 textarea {

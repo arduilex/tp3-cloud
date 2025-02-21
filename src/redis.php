@@ -14,6 +14,13 @@ function connectRedis()
 function sendMessage($channel, $message)
 {
     $redis = connectRedis();
-    $redis->publish($channel, $message);
+    $redis->lPush($channel, $message);
+}
+
+// Fonction pour recevoir un message de Redis
+function receiveMessage($channel)
+{
+    $redis = connectRedis();
+    return $redis->rPop($channel);
 }
 ?>
