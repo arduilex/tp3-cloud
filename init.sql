@@ -1,0 +1,17 @@
+CREATE DATABASE IF NOT EXISTS messagerie;
+USE messagerie;
+
+CREATE TABLE IF NOT EXISTS users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255) NOT NULL,
+);
+
+CREATE TABLE IF NOT EXISTS messages (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    sender_id INT NOT NULL,
+    receiver_id INT NOT NULL,
+    message VARCHAR(255) NULL,
+    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREING KEY (sender_id) REFERENCES users(id) ON DELETE CASCADE,
+    FOREING KEY (receiver_id) REFERENCES users(id) ON DELETE CASCADE,
+);
